@@ -1,0 +1,7 @@
+{
+  "name": "LearnHub",
+  "description": "Platform modul pembelajaran digital terstruktur untuk Jaringan Komputer, Bahasa Inggris, dan Matematika dengan desain editorial modern.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
