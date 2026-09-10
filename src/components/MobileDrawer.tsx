@@ -7,13 +7,10 @@ interface MobileDrawerProps {
   onClose: () => void;
   module: Module;
   activeLessonId: string | null;
-  completedLessonIds: string[];
   onSelectLesson: (lessonId: string) => void;
   onNavigateHome: () => void;
   onNavigateCatalog?: () => void;
-  completedCount: number;
-  totalCount: number;
-  percentage: number;
+  totalCount?: number;
 }
 
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({
@@ -21,13 +18,10 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   onClose,
   module,
   activeLessonId,
-  completedLessonIds,
   onSelectLesson,
   onNavigateHome,
   onNavigateCatalog,
-  completedCount,
   totalCount,
-  percentage,
 }) => {
   useEffect(() => {
     if (isOpen) {
@@ -52,18 +46,15 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
       />
 
       {/* Drawer panel */}
-      <div className="relative w-4/5 max-w-xs h-full bg-white dark:bg-[#0c0c0e] shadow-2xl z-10 flex flex-col animate-in slide-in-from-left duration-200">
+      <div className="relative w-4/5 max-w-xs h-full bg-white shadow-2xl z-10 flex flex-col animate-in slide-in-from-left duration-200">
         <Sidebar
           module={module}
           activeLessonId={activeLessonId}
-          completedLessonIds={completedLessonIds}
           onSelectLesson={onSelectLesson}
           onNavigateHome={onNavigateHome}
           onNavigateCatalog={onNavigateCatalog}
           onCloseMobile={onClose}
-          completedCount={completedCount}
           totalCount={totalCount}
-          percentage={percentage}
         />
       </div>
     </div>

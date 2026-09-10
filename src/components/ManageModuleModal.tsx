@@ -176,11 +176,11 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#121215] border border-neutral-300 dark:border-neutral-800 flex flex-col shadow-2xl overflow-hidden"
+        className="w-full max-w-4xl max-h-[90vh] bg-white border border-neutral-300 flex flex-col shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-4 sm:p-5 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between bg-neutral-50 dark:bg-neutral-900/40">
+        <div className="p-4 sm:p-5 border-b border-neutral-200 flex items-center justify-between bg-neutral-50">
           <div>
             <div className="flex items-center gap-2">
               <span className="font-mono text-xs font-bold text-red-500 uppercase tracking-wider">
@@ -192,7 +192,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                 </span>
               )}
             </div>
-            <h2 className="text-lg font-bold text-neutral-900 dark:text-white">
+            <h2 className="text-lg font-bold text-neutral-900">
               Manajemen Struktur & Konten: {currentModule.title}
             </h2>
           </div>
@@ -206,7 +206,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
+              className="p-1.5 text-neutral-400 hover:text-neutral-900 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -215,7 +215,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
 
         {/* Module Switcher Tabs */}
         {modules && modules.length > 1 && (
-          <div className="px-4 py-2 bg-neutral-100 dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 flex items-center gap-2 overflow-x-auto text-xs font-mono">
+          <div className="px-4 py-2 bg-neutral-100 border-b border-neutral-200 flex items-center gap-2 overflow-x-auto text-xs font-mono">
             <span className="text-neutral-500 uppercase text-[10px] mr-1">Pilih Subjek:</span>
             {modules.map((m) => {
               const isSelected = m.id === currentModule.id;
@@ -229,8 +229,8 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                   }}
                   className={`px-3 py-1 transition-colors cursor-pointer whitespace-nowrap ${
                     isSelected
-                      ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-bold'
-                      : 'bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white'
+                      ? 'bg-neutral-900 text-white font-bold'
+                      : 'bg-white text-neutral-600 hover:text-neutral-900'
                   }`}
                 >
                   {m.id === 'jaringan-komputer' && 'Jaringan Komputer'}
@@ -248,15 +248,15 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
           {/* Editing Lesson Modal Drawer */}
           {editingLesson ? (
-            <form onSubmit={handleSaveLessonEdit} className="space-y-4 border border-neutral-200 dark:border-neutral-800 p-4 bg-neutral-50/50 dark:bg-neutral-900/30">
-              <div className="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+            <form onSubmit={handleSaveLessonEdit} className="space-y-4 border border-neutral-200 p-4 bg-neutral-50/50">
+              <div className="flex items-center justify-between pb-2 border-b border-neutral-200">
                 <span className="font-mono text-xs uppercase font-bold text-red-500">
                   Edit Materi: {editingLesson.lesson.title}
                 </span>
                 <button
                   type="button"
                   onClick={() => setEditingLesson(null)}
-                  className="text-xs text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 font-mono"
+                  className="text-xs text-neutral-400 hover:text-neutral-700 font-mono"
                 >
                   Batal
                 </button>
@@ -275,7 +275,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                       lesson: { ...editingLesson.lesson, title: e.target.value },
                     })
                   }
-                  className="w-full text-sm p-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#1a1a1e] text-neutral-900 dark:text-neutral-100"
+                  className="w-full text-sm p-2 border border-neutral-300 bg-white text-neutral-900"
                   required
                 />
               </div>
@@ -293,7 +293,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                     })
                   }
                   rows={2}
-                  className="w-full text-sm p-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#1a1a1e] text-neutral-900 dark:text-neutral-100 font-sans"
+                  className="w-full text-sm p-2 border border-neutral-300 bg-white text-neutral-900 font-sans"
                 />
               </div>
 
@@ -316,7 +316,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                         },
                       })
                     }
-                    className="w-full text-sm p-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#1a1a1e] text-neutral-900 dark:text-neutral-100 font-mono"
+                    className="w-full text-sm p-2 border border-neutral-300 bg-white text-neutral-900 font-mono"
                   />
                 </div>
               </div>
@@ -325,13 +325,13 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setEditingLesson(null)}
-                  className="px-3 py-1.5 border border-neutral-300 dark:border-neutral-700 text-xs font-mono cursor-pointer"
+                  className="px-3 py-1.5 border border-neutral-300 text-xs font-mono cursor-pointer"
                 >
                   Kembali
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-mono font-bold uppercase cursor-pointer"
+                  className="px-4 py-1.5 bg-neutral-900 text-white text-xs font-mono font-bold uppercase cursor-pointer"
                 >
                   Terapkan Perubahan
                 </button>
@@ -341,7 +341,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
 
           {/* Module Chapters List */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+            <div className="flex items-center justify-between pb-2 border-b border-neutral-200">
               <span className="text-xs font-mono uppercase tracking-wider text-neutral-500">
                 Struktur Bab & Materi Saat Ini
               </span>
@@ -358,7 +358,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
             {isAddingChapter && (
               <form
                 onSubmit={handleAddChapter}
-                className="p-4 border border-dashed border-red-500/50 bg-red-50/20 dark:bg-red-950/10 space-y-3"
+                className="p-4 border border-dashed border-red-500/50 bg-red-50/20 space-y-3"
               >
                 <p className="text-xs font-mono uppercase font-bold text-red-500">
                   Tambah Bab Pembelajaran Baru
@@ -369,7 +369,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                     placeholder="Judul Bab (contoh: Network Security)"
                     value={newChapterTitle}
                     onChange={(e) => setNewChapterTitle(e.target.value)}
-                    className="w-full text-sm p-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#1a1a1e] text-neutral-900 dark:text-neutral-100"
+                    className="w-full text-sm p-2 border border-neutral-300 bg-white text-neutral-900"
                     required
                   />
                 </div>
@@ -379,14 +379,14 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                     placeholder="Deskripsi singkat bab"
                     value={newChapterSummary}
                     onChange={(e) => setNewChapterSummary(e.target.value)}
-                    className="w-full text-sm p-2 border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#1a1a1e] text-neutral-900 dark:text-neutral-100"
+                    className="w-full text-sm p-2 border border-neutral-300 bg-white text-neutral-900"
                   />
                 </div>
                 <div className="flex justify-end gap-2">
                   <button
                     type="button"
                     onClick={() => setIsAddingChapter(false)}
-                    className="px-3 py-1 text-xs font-mono cursor-pointer border border-neutral-300 dark:border-neutral-700"
+                    className="px-3 py-1 text-xs font-mono cursor-pointer border border-neutral-300"
                   >
                     Batal
                   </button>
@@ -405,14 +405,14 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
               {currentModule.chapters.map((chapter, chapIdx) => (
                 <div
                   key={chapter.id}
-                  className="p-3.5 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#17171c]"
+                  className="p-3.5 border border-neutral-200 bg-white"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-xs font-bold text-red-500">
                         {chapter.number}
                       </span>
-                      <h3 className="text-sm font-bold text-neutral-900 dark:text-white">
+                      <h3 className="text-sm font-bold text-neutral-900">
                         {chapter.title}
                       </h3>
                       <span className="text-[11px] font-mono text-neutral-400">
@@ -424,7 +424,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                       <button
                         onClick={() => handleMoveChapter(chapIdx, 'up')}
                         disabled={chapIdx === 0}
-                        className="p-1 text-neutral-400 hover:text-neutral-900 dark:hover:text-white disabled:opacity-20 cursor-pointer"
+                        className="p-1 text-neutral-400 hover:text-neutral-900 disabled:opacity-20 cursor-pointer"
                         title="Geser ke Atas"
                       >
                         <ArrowUp className="w-3.5 h-3.5" />
@@ -432,7 +432,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                       <button
                         onClick={() => handleMoveChapter(chapIdx, 'down')}
                         disabled={chapIdx === currentModule.chapters.length - 1}
-                        className="p-1 text-neutral-400 hover:text-neutral-900 dark:hover:text-white disabled:opacity-20 cursor-pointer"
+                        className="p-1 text-neutral-400 hover:text-neutral-900 disabled:opacity-20 cursor-pointer"
                         title="Geser ke Bawah"
                       >
                         <ArrowDown className="w-3.5 h-3.5" />
@@ -456,11 +456,11 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                   </div>
 
                   {/* Lessons list inside chapter */}
-                  <div className="mt-2 pl-4 border-l-2 border-neutral-100 dark:border-neutral-800 space-y-1">
+                  <div className="mt-2 pl-4 border-l-2 border-neutral-100 space-y-1">
                     {chapter.lessons.map((lesson) => (
                       <div
                         key={lesson.id}
-                        className="flex items-center justify-between text-xs py-1 text-neutral-700 dark:text-neutral-300"
+                        className="flex items-center justify-between text-xs py-1 text-neutral-700"
                       >
                         <span className="truncate pr-2">{lesson.title}</span>
                         <div className="flex items-center gap-2 shrink-0">
@@ -469,7 +469,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
                           </span>
                           <button
                             onClick={() => setEditingLesson({ chapterId: chapter.id, lesson })}
-                            className="p-1 text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
+                            className="p-1 text-neutral-400 hover:text-neutral-900 cursor-pointer"
                             title="Edit Materi"
                           >
                             <Edit3 className="w-3 h-3" />
@@ -492,7 +492,7 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+        <div className="p-4 border-t border-neutral-200 bg-neutral-50 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
           <button
             onClick={() => {
               if (confirm('Kembalikan semua bab dan materi ke data contoh original (7 Bab · 11 Materi)?')) {
@@ -509,13 +509,13 @@ export const ManageModuleModal: React.FC<ManageModuleModalProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={onClose}
-              className="px-3 py-1.5 border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 cursor-pointer"
+              className="px-3 py-1.5 border border-neutral-300 text-neutral-700 cursor-pointer"
             >
               Tutup
             </button>
             <button
               onClick={handleSave}
-              className="px-4 py-1.5 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-bold uppercase cursor-pointer"
+              className="px-4 py-1.5 bg-neutral-900 text-white font-bold uppercase cursor-pointer"
             >
               Simpan Perubahan
             </button>

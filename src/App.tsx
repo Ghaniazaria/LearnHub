@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Module, ThemeMode } from './types';
+import { Module } from './types';
 import {
   getStoredModules,
-  saveStoredModules,
-  resetAllStoredModules,
-  getStoredModuleById,
   saveStoredModule,
   resetStoredModule,
-  getStoredProgress,
   saveStoredProgress,
-  getStoredTheme,
-  saveStoredTheme,
 } from './utils/storage';
 import {
-  calculateProgress,
   findLessonContext,
   getAllFlattenedLessons,
 } from './utils/navigation';
@@ -34,10 +27,6 @@ export default function App() {
   const [activeModuleId, setActiveModuleId] = useState<string>('jaringan-komputer');
   const [viewMode, setViewMode] = useState<ViewMode>('catalog');
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
-  const [completedLessonIds, setCompletedLessonIds] = useState<string[]>(
-    () => getStoredProgress().completedLessonIds
-  );
-  const [theme, setTheme] = useState<ThemeMode>(() => getStoredTheme());
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -47,10 +36,11 @@ export default function App() {
   const currentModule =
     modules.find((m) => m.id === activeModuleId) || modules[0];
 
-  // Initialize theme on mount
+  // Ensure light mode is strictly applied
   useEffect(() => {
-    saveStoredTheme(theme);
-  }, [theme]);
+    document.documentElement.classList.remove('dark');
+    document.body.classList.remove('dark');
+  }, []);
 
   // Handle global keyboard shortcuts: Ctrl+K / Cmd+K for search
   useEffect(() => {
@@ -63,12 +53,6 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
-
-  const toggleTheme = () => {
-    const nextTheme: ThemeMode = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-    saveStoredTheme(nextTheme);
-  };
 
   const handleSelectModuleFromCatalog = (moduleId: string) => {
     setActiveModuleId(moduleId);
@@ -85,7 +69,6 @@ export default function App() {
 
     // Save as last read
     saveStoredProgress({
-      completedLessonIds,
       lastReadLessonId: lessonId,
     });
   };
@@ -96,25 +79,7 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     saveStoredProgress({
-      completedLessonIds,
       lastReadLessonId: lessonId,
-    });
-  };
-
-  const handleToggleComplete = () => {
-    if (!activeLessonId) return;
-
-    let updated: string[];
-    if (completedLessonIds.includes(activeLessonId)) {
-      updated = completedLessonIds.filter((id) => id !== activeLessonId);
-    } else {
-      updated = [...completedLessonIds, activeLessonId];
-    }
-
-    setCompletedLessonIds(updated);
-    saveStoredProgress({
-      completedLessonIds: updated,
-      lastReadLessonId: activeLessonId,
     });
   };
 
@@ -125,9 +90,7 @@ export default function App() {
 
     const flat = getAllFlattenedLessons(targetModule);
     if (flat.length > 0) {
-      const uncompleted = flat.find((item) => !completedLessonIds.includes(item.lesson.id));
-      const target = uncompleted ? uncompleted.lesson.id : flat[0].lesson.id;
-      handleSelectLesson(targetModule.id, target);
+      handleSelectLesson(targetModule.id, flat[0].lesson.id);
     }
   };
 
@@ -143,10 +106,10 @@ export default function App() {
     setModules(updatedModules);
   };
 
-  // Compute progress for current module
-  const { total, completed, percentage } = calculateProgress(
-    currentModule,
-    completedLessonIds
+  // Total lessons for current module
+  const totalLessons = currentModule.chapters.reduce(
+    (acc, c) => acc + c.lessons.length,
+    0
   );
 
   // Lesson context if in reading view
@@ -158,12 +121,10 @@ export default function App() {
   return (
     <div
       id="learnhub-root"
-      className="min-h-screen bg-[#fafafa] dark:bg-[#09090b] text-[#121214] dark:text-[#f4f4f5] flex flex-col font-sans transition-colors duration-200"
+      className="min-h-screen bg-[#fafafa] text-[#121214] flex flex-col font-sans"
     >
       {/* Top Navigation */}
       <Navbar
-        theme={theme}
-        onToggleTheme={toggleTheme}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenSidebar={() => {
           if (window.innerWidth < 768) {
@@ -196,7 +157,6 @@ export default function App() {
         chapterNumber={lessonContext?.current.chapter.number}
         chapterTitle={lessonContext?.current.chapter.title}
         lessonTitle={lessonContext?.current.lesson.title}
-        percentage={percentage}
       />
 
       {/* Main Container Area */}
@@ -208,7 +168,6 @@ export default function App() {
             onClose={() => setIsMobileDrawerOpen(false)}
             module={currentModule}
             activeLessonId={activeLessonId}
-            completedLessonIds={completedLessonIds}
             onSelectLesson={(lessonId) => handleLessonChangeInReader(lessonId)}
             onNavigateHome={() => {
               setViewMode('module_overview');
@@ -222,9 +181,7 @@ export default function App() {
               setIsMobileDrawerOpen(false);
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            completedCount={completed}
-            totalCount={total}
-            percentage={percentage}
+            totalCount={totalLessons}
           />
         )}
 
@@ -233,8 +190,8 @@ export default function App() {
           <main id="learnhub-home-container" className="flex-1 w-full">
             <HomePage
               modules={modules}
-              completedLessonIds={completedLessonIds}
               onSelectModule={handleSelectModuleFromCatalog}
+              onStartReadingModule={handleStartReadingModule}
               onSelectLesson={handleSelectLesson}
               onOpenSearch={() => setIsSearchOpen(true)}
             />
@@ -256,7 +213,7 @@ export default function App() {
                   setActiveLessonId(null);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-xs font-mono tracking-wider uppercase text-neutral-500 hover:text-neutral-900 dark:hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="text-xs font-mono tracking-wider uppercase text-neutral-500 hover:text-neutral-900 flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>←</span>
                 <span>Kembali ke Katalog Semua Modul</span>
@@ -270,21 +227,18 @@ export default function App() {
             <ModuleHeader
               module={currentModule}
               onStartReading={() => handleStartReadingModule(currentModule.id)}
-              completedCount={completed}
-              totalCount={total}
-              percentage={percentage}
+              totalCount={totalLessons}
             />
 
             <ChapterList
               chapters={currentModule.chapters}
-              completedLessonIds={completedLessonIds}
               onSelectLesson={(lessonId) => handleSelectLesson(currentModule.id, lessonId)}
             />
 
             {/* Editorial Module Footer */}
             <footer
               id="editorial-footer"
-              className="mt-16 pt-8 pb-12 border-t border-neutral-200 dark:border-neutral-800 text-xs font-mono text-neutral-400 flex flex-col sm:flex-row items-center justify-between gap-4"
+              className="mt-16 pt-8 pb-12 border-t border-neutral-200 text-xs font-mono text-neutral-400 flex flex-col sm:flex-row items-center justify-between gap-4"
             >
               <div>
                 <span>LEARNHUB · MODUL {currentModule.title.toUpperCase()}</span>
@@ -293,7 +247,7 @@ export default function App() {
                 <button
                   id="btn-footer-search"
                   onClick={() => setIsSearchOpen(true)}
-                  className="hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+                  className="hover:text-neutral-900 transition-colors cursor-pointer"
                 >
                   Cari Materi (⌘K)
                 </button>
@@ -301,12 +255,12 @@ export default function App() {
                 <button
                   id="btn-footer-manage"
                   onClick={() => setIsManageOpen(true)}
-                  className="hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+                  className="hover:text-neutral-900 transition-colors cursor-pointer"
                 >
                   Kelola Bab
                 </button>
                 <span>•</span>
-                <span>{percentage}% Selesai</span>
+                <span>{totalLessons} Materi Tersedia</span>
               </div>
             </footer>
           </main>
@@ -327,7 +281,6 @@ export default function App() {
                 <Sidebar
                   module={currentModule}
                   activeLessonId={activeLessonId}
-                  completedLessonIds={completedLessonIds}
                   onSelectLesson={(lessonId) => handleLessonChangeInReader(lessonId)}
                   onNavigateHome={() => {
                     setViewMode('module_overview');
@@ -340,9 +293,7 @@ export default function App() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   onCollapseToggle={() => setIsSidebarOpen(false)}
-                  completedCount={completed}
-                  totalCount={total}
-                  percentage={percentage}
+                  totalCount={totalLessons}
                 />
               </div>
             )}
@@ -350,15 +301,13 @@ export default function App() {
             {/* Reading View Center */}
             <main
               id="reading-main-content"
-              className="flex-1 min-w-0 bg-[#fafafa] dark:bg-[#09090b]"
+              className="flex-1 min-w-0 bg-[#fafafa]"
             >
               <ReadingContent
                 chapter={lessonContext.current.chapter}
                 lesson={lessonContext.current.lesson}
                 prev={lessonContext.prev}
                 next={lessonContext.next}
-                isCompleted={completedLessonIds.includes(lessonContext.current.lesson.id)}
-                onToggleComplete={handleToggleComplete}
                 onNavigateLesson={(lessonId) => handleLessonChangeInReader(lessonId)}
                 onBackToOverview={() => {
                   setViewMode('module_overview');

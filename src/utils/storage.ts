@@ -146,31 +146,15 @@ export function saveStoredProgress(progress: ProgressData): void {
 }
 
 export function getStoredTheme(): ThemeMode {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEYS.THEME) as ThemeMode | null;
-    if (saved === 'dark' || saved === 'light') {
-      return saved;
-    }
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-  } catch (err) {
-    console.error('Failed to get theme preference:', err);
-  }
   return 'light';
 }
 
-export function saveStoredTheme(theme: ThemeMode): void {
+export function saveStoredTheme(theme: ThemeMode = 'light'): void {
   try {
-    localStorage.setItem(STORAGE_KEYS.THEME, theme);
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-    }
+    localStorage.removeItem(STORAGE_KEYS.THEME);
+    document.documentElement.classList.remove('dark');
+    document.body.classList.remove('dark');
   } catch (err) {
-    console.error('Failed to save theme preference:', err);
+    console.error('Failed to clear dark theme preference:', err);
   }
 }

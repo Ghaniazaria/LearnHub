@@ -45,7 +45,7 @@ export interface Module {
 }
 
 export interface ProgressData {
-  completedLessonIds: string[];
+  completedLessonIds?: string[];
   lastReadLessonId?: string;
 }
 

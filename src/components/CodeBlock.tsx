@@ -20,7 +20,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = 'text' })
   };
 
   return (
-    <div className="my-6 rounded-none border border-neutral-200 dark:border-neutral-800 bg-[#0d0e11] text-neutral-200 overflow-hidden font-mono-code text-xs sm:text-sm">
+    <div className="my-6 rounded-none border border-neutral-200 bg-[#0d0e11] text-neutral-200 overflow-hidden font-mono-code text-xs sm:text-sm">
       <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800 bg-[#14161b] text-neutral-400">
         <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-400">
           {language}

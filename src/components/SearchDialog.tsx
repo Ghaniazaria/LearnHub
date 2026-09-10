@@ -76,11 +76,11 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
     >
       <div
         id="search-dialog-card"
-        className="w-full max-w-2xl bg-white dark:bg-[#121215] border border-neutral-300 dark:border-neutral-800 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col max-h-[85vh]"
+        className="w-full max-w-2xl bg-white border border-neutral-300 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/30">
+        <div className="flex items-center px-4 py-3.5 border-b border-neutral-200 bg-neutral-50/50">
           <Search className="w-4 h-4 text-neutral-400 shrink-0 mr-3" />
           <input
             id="search-dialog-input"
@@ -89,30 +89,30 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Cari konsep (contoh: tenses, aljabar, ip address, routing, limit)..."
-            className="w-full bg-transparent text-sm text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 focus:outline-hidden font-sans"
+            className="w-full bg-transparent text-sm text-neutral-900 placeholder-neutral-400 focus:outline-hidden font-sans"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="p-1 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 mr-2 cursor-pointer"
+              className="p-1 text-neutral-400 hover:text-neutral-600 mr-2 cursor-pointer"
               title="Hapus pencarian"
             >
               <X className="w-4 h-4" />
             </button>
           )}
-          <span className="hidden sm:inline-block text-[11px] font-mono px-1.5 py-0.5 border border-neutral-300 dark:border-neutral-700 text-neutral-500 rounded">
+          <span className="hidden sm:inline-block text-[11px] font-mono px-1.5 py-0.5 border border-neutral-300 text-neutral-500 rounded">
             ESC
           </span>
         </div>
 
         {/* Module Filter Chips */}
-        <div className="px-4 py-2 border-b border-neutral-100 dark:border-neutral-800 flex items-center gap-1.5 overflow-x-auto text-xs font-mono">
+        <div className="px-4 py-2 border-b border-neutral-100 flex items-center gap-1.5 overflow-x-auto text-xs font-mono">
           <button
             onClick={() => setSelectedModuleFilter('all')}
             className={`px-2 py-0.5 transition-colors cursor-pointer whitespace-nowrap ${
               selectedModuleFilter === 'all'
-                ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-bold'
-                : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
+                ? 'bg-neutral-900 text-white font-bold'
+                : 'text-neutral-500 hover:text-neutral-900'
             }`}
           >
             Semua Modul
@@ -123,8 +123,8 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
               onClick={() => setSelectedModuleFilter(m.id)}
               className={`px-2 py-0.5 transition-colors cursor-pointer whitespace-nowrap ${
                 selectedModuleFilter === m.id
-                  ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-bold'
-                  : 'text-neutral-500 hover:text-neutral-900 dark:hover:text-white'
+                  ? 'bg-neutral-900 text-white font-bold'
+                  : 'text-neutral-500 hover:text-neutral-900'
               }`}
             >
               {m.id === 'jaringan-komputer' && 'Jaringan'}
@@ -136,7 +136,7 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
         </div>
 
         {/* Results list */}
-        <div className="flex-1 overflow-y-auto divide-y divide-neutral-100 dark:divide-neutral-800/60 p-2">
+        <div className="flex-1 overflow-y-auto divide-y divide-neutral-100 p-2">
           {query.trim() === '' ? (
             <div className="py-12 text-center text-xs text-neutral-500 font-mono space-y-1">
               <p>Ketik kata kunci untuk mencari di seluruh materi Bahasa Inggris, Matematika, dan Jaringan Komputer.</p>
@@ -159,38 +159,38 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
                   onMouseEnter={() => setSelectedIndex(index)}
                   className={`w-full text-left p-3 transition-colors flex items-start justify-between gap-3 cursor-pointer ${
                     isSelected
-                      ? 'bg-neutral-100 dark:bg-neutral-800/80 text-neutral-900 dark:text-white'
-                      : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/40 text-neutral-700 dark:text-neutral-300'
+                      ? 'bg-neutral-100 text-neutral-900'
+                      : 'hover:bg-neutral-50 text-neutral-700'
                   }`}
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-1.5 mb-1">
-                      <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">
+                      <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 bg-neutral-200 text-neutral-700">
                         {res.moduleId === 'jaringan-komputer' && 'Jaringan'}
                         {res.moduleId === 'bahasa-inggris' && 'B. Inggris'}
                         {res.moduleId === 'matematika' && 'Matematika'}
                         {!['jaringan-komputer', 'bahasa-inggris', 'matematika'].includes(res.moduleId) && res.moduleId}
                       </span>
-                      <span className="font-mono text-[11px] font-semibold text-neutral-600 dark:text-neutral-400">
+                      <span className="font-mono text-[11px] font-semibold text-neutral-600">
                         BAB {res.chapterNumber}
                       </span>
                       <span className="text-[11px] text-neutral-400 truncate max-w-[150px]">
                         {res.chapterTitle}
                       </span>
-                      <span className="text-[10px] font-mono uppercase px-1 py-0.2 text-neutral-400 border border-neutral-200 dark:border-neutral-800 rounded">
+                      <span className="text-[10px] font-mono uppercase px-1 py-0.2 text-neutral-400 border border-neutral-200 rounded">
                         {res.matchType}
                       </span>
                     </div>
-                    <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
+                    <p className="text-sm font-semibold text-neutral-900">
                       {res.lessonTitle}
                     </p>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-1 mt-0.5 font-sans">
+                    <p className="text-xs text-neutral-500 line-clamp-1 mt-0.5 font-sans">
                       {res.matchSnippet}
                     </p>
                   </div>
                   <div className="shrink-0 pt-1 text-neutral-400">
                     {isSelected ? (
-                      <CornerDownLeft className="w-4 h-4 text-neutral-900 dark:text-white" />
+                      <CornerDownLeft className="w-4 h-4 text-neutral-900" />
                     ) : (
                       <ArrowRight className="w-4 h-4 opacity-40" />
                     )}
@@ -202,7 +202,7 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
         </div>
 
         {/* Footer shortcuts */}
-        <div className="px-4 py-2.5 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-between text-[11px] font-mono text-neutral-500">
+        <div className="px-4 py-2.5 border-t border-neutral-200 bg-neutral-50 flex items-center justify-between text-[11px] font-mono text-neutral-500">
           <span>Tekan ↑ ↓ navigasi · ↵ pilih</span>
           <span>{results.length} materi ditemukan</span>
         </div>
