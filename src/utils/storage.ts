@@ -8,7 +8,7 @@ import {
 } from '../data/defaultModules';
 
 const STORAGE_KEYS = {
-  MODULES_CATALOG: 'learnhub_modules_catalog_v2',
+  MODULES_CATALOG: 'learnhub_modules_catalog_v7',
   MODULE_DATA_LEGACY: 'learnhub_module_data_v1',
   PROGRESS: 'learnhub_reading_progress_v1',
   THEME: 'learnhub_theme_v1',
@@ -25,7 +25,19 @@ export function getStoredModules(): Module[] {
         ALL_DEFAULT_MODULES.forEach((def) => moduleMap.set(def.id, def));
         parsed.forEach((m: Module) => {
           if (m && m.id) {
-            moduleMap.set(m.id, m);
+            const defMod = ALL_DEFAULT_MODULES.find((d) => d.id === m.id);
+            // Prioritize richer or updated default module
+            if (
+              defMod &&
+              (defMod.chapters.length > (m.chapters?.length || 0) ||
+                m.id === 'jaringan-komputer' ||
+                m.id === 'bahasa-inggris' ||
+                m.id === 'matematika')
+            ) {
+              moduleMap.set(m.id, defMod);
+            } else {
+              moduleMap.set(m.id, m);
+            }
           }
         });
         return Array.from(moduleMap.values());

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, BookOpen, Clock } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, ShieldCheck } from 'lucide-react';
 import { Module } from '../types';
 
 interface ModuleHeaderProps {
@@ -36,9 +36,90 @@ export const ModuleHeader: React.FC<ModuleHeaderProps> = ({
       </div>
 
       {/* Editorial Summary */}
-      <p className="mt-6 sm:mt-8 text-sm sm:text-base md:text-lg text-neutral-600 max-w-2xl leading-relaxed">
+      <p className="mt-6 sm:mt-8 text-sm sm:text-base md:text-lg text-neutral-600 max-w-3xl leading-relaxed">
         {module.description}
       </p>
+
+      {/* Official Curriculum / Provenance Verification Banner for Computer Networking */}
+      {module.id === 'jaringan-komputer' && (
+        <div className="mt-6 p-4 sm:p-5 bg-neutral-100/70 border border-neutral-300 text-xs font-mono space-y-2">
+          <div className="flex items-center gap-2 text-neutral-900 font-bold uppercase tracking-wider text-xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>STANDAR RUJUKAN RESMI TERVERIFIKASI</span>
+          </div>
+          <p className="text-neutral-700 font-sans leading-relaxed text-xs sm:text-sm">
+            Seluruh kurikulum, penjelasan teoritis, format paket/PDU, dan sintaks konfigurasi CLI pada modul ini bersumber 100% dari silabus resmi <strong>Cisco Networking Academy (NetAcad CCNA 200-301)</strong> dan dokumentasi resmi <strong>MikroTik RouterOS v7 (MTCNA / MTCRE)</strong> serta standar baku <strong>IETF RFC</strong>.
+          </p>
+          <div className="flex flex-wrap gap-2 pt-1.5">
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Cisco NetAcad (ITN · SRWE · ENSA)
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              MikroTik RouterOS v7 (MTCNA · MTCRE)
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Standar IETF RFC & IEEE 802.1Q / 802.3ad
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Official Curriculum Banner for English Grammar & 16 Tenses */}
+      {module.id === 'bahasa-inggris' && (
+        <div className="mt-6 p-4 sm:p-5 bg-neutral-100/70 border border-neutral-300 text-xs font-mono space-y-2">
+          <div className="flex items-center gap-2 text-neutral-900 font-bold uppercase tracking-wider text-xs">
+            <ShieldCheck className="w-4 h-4 text-indigo-600 shrink-0" />
+            <span>KURIKULUM TATA BAHASA & 16 TENSES LENGKAP</span>
+          </div>
+          <p className="text-neutral-700 font-sans leading-relaxed text-xs sm:text-sm">
+            Silabus mencakup <strong>Matriks Lengkap 16 Tenses</strong> (Present, Past, Future, Past Future × Simple, Continuous, Perfect, Perfect Continuous) serta materi pendukung esensial berstandar akademik CEFR/TOEFL: <strong>Gerund & To-Infinitive</strong>, <strong>Participles</strong>, <strong>Passive Voice</strong>, <strong>Modal Auxiliaries & Modal Perfect</strong>, <strong>Causative Verbs</strong>, <strong>Direct-Indirect / Reported Speech</strong>, <strong>Conditionals & Subjunctive</strong>, <strong>Relative Clauses</strong>, <strong>Degrees of Comparison</strong>, dan <strong>Question Tags</strong>.
+          </p>
+          <div className="flex flex-wrap gap-2 pt-1.5">
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              16 English Tenses Matrix
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Gerund & To-Infinitive Mastery
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Passive, Causative & Reported Speech
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Conditionals & Subjunctive Mood
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Official Curriculum Banner for Mathematics Mind Map */}
+      {module.id === 'matematika' && (
+        <div className="mt-6 p-4 sm:p-5 bg-neutral-100/70 border border-neutral-300 text-xs font-mono space-y-2">
+          <div className="flex items-center gap-2 text-neutral-900 font-bold uppercase tracking-wider text-xs">
+            <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
+            <span>PETA KONSEP 10 CABANG MATEMATIKA KOMPREHENSIF</span>
+          </div>
+          <p className="text-neutral-700 font-sans leading-relaxed text-xs sm:text-sm">
+            Kurikulum disusun terstruktur memetakan 10 cabang utama matematika: <strong>Aritmatika</strong>, <strong>Aljabar</strong> (Polinom, Persamaan Kuadrat, SPL, Eksponen & Logaritma), <strong>Geometri</strong> (Datar, Ruang, Lingkaran, Transformasi, Vektor), <strong>Trigonometri</strong>, <strong>Barisan & Deret</strong> (Sigma, Rekurensi), <strong>Kalkulus</strong> (Limit, Diferensial, Integral), <strong>Statistika</strong>, <strong>Peluang</strong> (Pencacahan, Permutasi, Kombinasi), <strong>Logika Matematika</strong>, dan <strong>Penalaran Matematika (HOTS & Pemodelan)</strong>.
+          </p>
+          <div className="flex flex-wrap gap-2 pt-1.5">
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Aritmatika & Aljabar
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Geometri & Trigonometri
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Kalkulus & Barisan Deret
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Statistika & Peluang
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-neutral-300 text-neutral-800 font-mono text-[11px] font-medium shadow-xs">
+              Logika & Penalaran HOTS
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* CTA Action matching PDF */}
       <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-6">
