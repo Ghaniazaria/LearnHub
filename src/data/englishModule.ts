@@ -2,8 +2,8 @@ import { Module } from '../types';
 
 export const DEFAULT_ENGLISH_MODULE: Module = {
   id: 'bahasa-inggris',
-  badge: 'MATRIKS 16 TENSES LENGKAP & TATA BAHASA PENDUKUNG · 10 BAB · 20 MATERI',
-  title: 'MODUL PEMBELAJARAN TATA BAHASA INGGRIS',
+  badge: 'MATRIKS 16 TENSES LENGKAP & MATERI PENDUKUNG · 10 BAB · 20 MATERI',
+  title: 'MODUL PEMBELAJARAN BAHASA INGGRIS',
   description:
     'Panduan komprehensif terlengkap penguasaan 16 Tenses bahasa Inggris disertai contoh kalimat positif (+), negatif (-), dan tanya (?) beserta artinya dalam bahasa Indonesia, serta materi pendukung esensial: Gerund & Infinitive, Participles, Passive Voice, Modals, Causative Verbs, Reported Speech, Conditionals, Relative Clauses, Degrees of Comparison, dan Question Tags.',
   category: 'Bahasa & Komunikasi Global',
@@ -33,35 +33,291 @@ export const DEFAULT_ENGLISH_MODULE: Module = {
             },
             {
               type: 'heading2',
-              text: 'Tabel Transformasi 1 Kalimat ("I learn English") dalam 16 Tenses',
+              text: 'Panduan Dasar Komponen Pembentuk Kalimat (S + Aux + Verb + O/C)',
             },
             {
               type: 'paragraph',
-              text: 'Perhatikan bagaimana satu kalimat sederhana berubah maknanya ketika dimasukkan ke dalam 16 tenses yang berbeda:',
+              text: 'Untuk menyusun kalimat bahasa Inggris dengan benar dalam 16 tenses, perhatikan 4 komponen utamanya: (1) Subjek [I, You, We, They, He, She, It], (2) Kata Kerja Bantu / Auxiliary [Do/Does, Did, Is/Am/Are, Was/Were, Have/Has, Had, Will, Would], (3) Bentuk Kata Kerja Utama [V1 / V2 / V3 / V-ing], dan (4) Objek / Pelengkap (Keterangan waktu/tempat).',
+            },
+            {
+              type: 'heading2',
+              text: 'Tabel Matriks 16 Tenses Lengkap: Rumus (+ / - / ?), Contoh Kalimat & Artinya',
+            },
+            {
+              type: 'paragraph',
+              text: 'Berikut adalah tabel komparasi lengkap 16 tenses yang memuat rumus verbal positif (+), negatif (-), dan tanya (?), beserta contoh perubahan kalimat yang sama ("I learn English") agar Anda dapat langsung membandingkan pola penyusunannya:',
             },
             {
               type: 'table',
               tableData: {
-                headers: ['No', 'Nama Tense', 'Bentuk Kalimat Bahasa Inggris', 'Arti & Maksud dalam Bahasa Indonesia'],
+                headers: ['No', 'Nama Tense', 'Rumus Pokok (+ / - / ?)', 'Bentuk Kalimat Bahasa Inggris', 'Arti & Maksud dalam Bahasa Indonesia'],
                 rows: [
-                  ['01', 'Simple Present', 'I learn English every day.', 'Saya belajar bahasa Inggris setiap hari. (Kebiasaan rutin/fakta).'],
-                  ['02', 'Present Continuous', 'I am learning English right now.', 'Saya sedang belajar bahasa Inggris sekarang. (Sedang berlangsung saat ini).'],
-                  ['03', 'Present Perfect', 'I have learned English for two years.', 'Saya sudah belajar bahasa Inggris selama dua tahun. (Sudah dilakukan, hasilnya terasa sekarang).'],
-                  ['04', 'Present Perfect Continuous', 'I have been learning English since morning.', 'Saya sudah dan masih terus belajar bahasa Inggris sejak pagi. (Menekankan durasi yang belum selesai).'],
-                  ['05', 'Simple Past', 'I learned English yesterday.', 'Saya belajar bahasa Inggris kemarin. (Kejadian sudah selesai di masa lalu).'],
-                  ['06', 'Past Continuous', 'I was learning English when you called.', 'Saya sedang belajar bahasa Inggris ketika kamu menelepon kemarin. (Aksi sedang berlangsung di masa lampau lalu diinterupsi).'],
-                  ['07', 'Past Perfect', 'I had learned English before moving to London.', 'Saya sudah belajar bahasa Inggris sebelum pindah ke London. (Selesai sebelum peristiwa lampau lainnya terjadi).'],
-                  ['08', 'Past Perfect Continuous', 'I had been learning English for an hour before the teacher came.', 'Saya sudah sedang belajar bahasa Inggris selama 1 jam sebelum guru datang kemarin.'],
-                  ['09', 'Simple Future', 'I will learn English tomorrow.', 'Saya akan belajar bahasa Inggris besok. (Rencana/keputusan masa depan).'],
-                  ['10', 'Future Continuous', 'I will be learning English at 8 PM tonight.', 'Saya akan sedang belajar bahasa Inggris pada jam 8 malam nanti. (Sedang berlangsung di masa depan).'],
-                  ['11', 'Future Perfect', 'I will have learned all 16 tenses by next week.', 'Saya akan sudah selesai mempelajari 16 tenses sebelum minggu depan tiba.'],
-                  ['12', 'Future Perfect Continuous', 'By next year, I will have been learning English for three years.', 'Menjelang tahun depan, saya akan sudah belajar bahasa Inggris selama tiga tahun penuh.'],
-                  ['13', 'Simple Past Future', 'I would learn English if I had more time.', 'Saya akan belajar bahasa Inggris seandainya saya punya waktu luang. (Pengandaian masa kini/lampau).'],
-                  ['14', 'Past Future Continuous', 'I would be learning English right now if the power were not out.', 'Saya seharusnya sedang belajar bahasa Inggris sekarang seandainya listrik tidak padam.'],
-                  ['15', 'Past Future Perfect', 'I would have learned English if you had reminded me.', 'Saya pasti sudah belajar bahasa Inggris kemarin seandainya kamu mengingatkan saya.'],
-                  ['16', 'Past Future Perfect Continuous', 'I would have been learning English for two hours by noon if the class had started.', 'Saya seharusnya sudah sedang belajar bahasa Inggris selama 2 jam menjelang siang kemarin jika kelas dimulai tepat waktu.'],
+                  [
+                    '01',
+                    'Simple Present',
+                    '(+) S + V1 (s/es) + O\n(-) S + do/does not + V1 + O\n(?) Do/Does + S + V1 + O?',
+                    'I learn English every day.',
+                    'Saya belajar bahasa Inggris setiap hari. (Kebiasaan rutin/fakta ilmiah).',
+                  ],
+                  [
+                    '02',
+                    'Present Continuous',
+                    '(+) S + is/am/are + V-ing + O\n(-) S + is/am/are not + V-ing + O\n(?) Is/Am/Are + S + V-ing + O?',
+                    'I am learning English right now.',
+                    'Saya sedang belajar bahasa Inggris sekarang. (Aktivitas berlangsung saat ini).',
+                  ],
+                  [
+                    '03',
+                    'Present Perfect',
+                    '(+) S + have/has + V3 + O\n(-) S + have/has not + V3 + O\n(?) Have/Has + S + V3 + O?',
+                    'I have learned English for two years.',
+                    'Saya sudah belajar bahasa Inggris selama dua tahun. (Sudah terjadi, hasil relevan saat ini).',
+                  ],
+                  [
+                    '04',
+                    'Present Perfect Continuous',
+                    '(+) S + have/has been + V-ing + O\n(-) S + have/has not been + V-ing + O\n(?) Have/Has + S + been + V-ing + O?',
+                    'I have been learning English since morning.',
+                    'Saya sudah dan masih terus belajar bahasa Inggris sejak pagi. (Durasi belum berakhir).',
+                  ],
+                  [
+                    '05',
+                    'Simple Past',
+                    '(+) S + V2 + O\n(-) S + did not + V1 + O\n(?) Did + S + V1 + O?',
+                    'I learned English yesterday.',
+                    'Saya belajar bahasa Inggris kemarin. (Kejadian tuntas di masa lampau).',
+                  ],
+                  [
+                    '06',
+                    'Past Continuous',
+                    '(+) S + was/were + V-ing + O\n(-) S + was/were not + V-ing + O\n(?) Was/Were + S + V-ing + O?',
+                    'I was learning English when you called.',
+                    'Saya sedang belajar bahasa Inggris ketika kamu menelepon kemarin. (Sedang berlangsung lalu diinterupsi).',
+                  ],
+                  [
+                    '07',
+                    'Past Perfect',
+                    '(+) S + had + V3 + O\n(-) S + had not + V3 + O\n(?) Had + S + V3 + O?',
+                    'I had learned English before moving to London.',
+                    'Saya sudah belajar bahasa Inggris sebelum pindah ke London. (Selesai sebelum aksi lampau lain).',
+                  ],
+                  [
+                    '08',
+                    'Past Perfect Continuous',
+                    '(+) S + had been + V-ing + O\n(-) S + had not been + V-ing + O\n(?) Had + S + been + V-ing + O?',
+                    'I had been learning English for an hour before the teacher came.',
+                    'Saya sudah sedang belajar bahasa Inggris selama 1 jam sebelum guru datang kemarin.',
+                  ],
+                  [
+                    '09',
+                    'Simple Future',
+                    '(+) S + will + V1 + O\n(-) S + will not (won\'t) + V1 + O\n(?) Will + S + V1 + O?',
+                    'I will learn English tomorrow.',
+                    'Saya akan belajar bahasa Inggris besok. (Keputusan spontan atau rencana masa depan).',
+                  ],
+                  [
+                    '10',
+                    'Future Continuous',
+                    '(+) S + will be + V-ing + O\n(-) S + will not be + V-ing + O\n(?) Will + S + be + V-ing + O?',
+                    'I will be learning English at 8 PM tonight.',
+                    'Saya akan sedang belajar bahasa Inggris pada jam 8 malam nanti. (Sedang berlangsung di masa depan).',
+                  ],
+                  [
+                    '11',
+                    'Future Perfect',
+                    '(+) S + will have + V3 + O\n(-) S + will not have + V3 + O\n(?) Will + S + have + V3 + O?',
+                    'I will have learned all 16 tenses by next week.',
+                    'Saya akan sudah selesai mempelajari 16 tenses sebelum minggu depan tiba.',
+                  ],
+                  [
+                    '12',
+                    'Future Perfect Continuous',
+                    '(+) S + will have been + V-ing + O\n(-) S + will not have been + V-ing + O\n(?) Will + S + have been + V-ing + O?',
+                    'By next year, I will have been learning English for three years.',
+                    'Menjelang tahun depan, saya akan sudah belajar bahasa Inggris selama tiga tahun penuh.',
+                  ],
+                  [
+                    '13',
+                    'Simple Past Future',
+                    '(+) S + would + V1 + O\n(-) S + would not (wouldn\'t) + V1 + O\n(?) Would + S + V1 + O?',
+                    'I would learn English if I had more time.',
+                    'Saya akan belajar bahasa Inggris seandainya saya punya waktu luang. (Rencana/pengandaian).',
+                  ],
+                  [
+                    '14',
+                    'Past Future Continuous',
+                    '(+) S + would be + V-ing + O\n(-) S + would not be + V-ing + O\n(?) Would + S + be + V-ing + O?',
+                    'I would be learning English right now if the power were not out.',
+                    'Saya seharusnya sedang belajar bahasa Inggris sekarang seandainya listrik tidak padam.',
+                  ],
+                  [
+                    '15',
+                    'Past Future Perfect',
+                    '(+) S + would have + V3 + O\n(-) S + would not have + V3 + O\n(?) Would + S + have + V3 + O?',
+                    'I would have learned English if you had reminded me.',
+                    'Saya pasti sudah belajar bahasa Inggris kemarin seandainya kamu mengingatkan saya.',
+                  ],
+                  [
+                    '16',
+                    'Past Future Perfect Continuous',
+                    '(+) S + would have been + V-ing + O\n(-) S + would not have been + V-ing + O\n(?) Would + S + have been + V-ing + O?',
+                    'I would have been learning English for two hours by noon if the class had started.',
+                    'Saya seharusnya sudah sedang belajar bahasa Inggris selama 2 jam menjelang siang kemarin jika kelas dimulai.',
+                  ],
                 ],
               },
+            },
+            {
+              type: 'heading2',
+              text: 'Katalog Rumus Cepat 16 Tenses per Kelompok Waktu',
+            },
+            {
+              type: 'paragraph',
+              text: 'Gunakan panduan formula di bawah ini untuk merangkai kalimat verbal maupun nominal dengan cepat:',
+            },
+            {
+              type: 'code',
+              language: 'text',
+              code: `=== 1. KELOMPOK PRESENT TENSES (WAKTU SEKARANG) ===
+
+1. Simple Present (Fakta & Kebiasaan):
+   (+) S + V1 (s/es) + O / Pelengkap
+       Contoh: She writes a letter. / They play football.
+   (-) S + do/does + not + V1 + O
+       Contoh: She does not write a letter. / They do not play football.
+   (?) Do/Does + S + V1 + O?
+       Contoh: Does she write a letter? / Do they play football?
+   *Nominal: S + is/am/are + Non-Verb (He is a teacher / They are happy)
+
+2. Present Continuous (Sedang Berlangsung):
+   (+) S + is/am/are + V-ing + O
+       Contoh: He is reading a novel right now.
+   (-) S + is/am/are + not + V-ing + O
+       Contoh: He is not reading a novel right now.
+   (?) Is/Am/Are + S + V-ing + O?
+       Contoh: Is he reading a novel right now?
+
+3. Present Perfect (Sudah Terjadi, Efek Berlanjut):
+   (+) S + have/has + V3 + O
+       Contoh: We have completed the project.
+   (-) S + have/has + not + V3 + O
+       Contoh: We have not completed the project yet.
+   (?) Have/Has + S + V3 + O?
+       Contoh: Have you completed the project?
+
+4. Present Perfect Continuous (Sudah & Masih Berlangsung):
+   (+) S + have/has + been + V-ing + O
+       Contoh: She has been working here for five years.
+   (-) S + have/has + not + been + V-ing + O
+       Contoh: She has not been working here for long.
+   (?) Have/Has + S + been + V-ing + O?
+       Contoh: Have you been waiting for me for an hour?
+
+
+=== 2. KELOMPOK PAST TENSES (WAKTU LAMPAU) ===
+
+5. Simple Past (Tuntas di Masa Lampau):
+   (+) S + V2 + O
+       Contoh: They visited Lombok last month.
+   (-) S + did not + V1 + O  [Perhatikan: kembali ke V1!]
+       Contoh: They did not visit Lombok last month.
+   (?) Did + S + V1 + O?
+       Contoh: Did they visit Lombok last month?
+   *Nominal: S + was/were + Non-Verb (She was tired yesterday)
+
+6. Past Continuous (Sedang Berlangsung di Masa Lalu):
+   (+) S + was/were + V-ing + O
+       Contoh: I was cooking dinner when he arrived.
+   (-) S + was/were + not + V-ing + O
+       Contoh: I was not cooking dinner when he arrived.
+   (?) Was/Were + S + V-ing + O?
+       Contoh: Were you cooking dinner when he arrived?
+
+7. Past Perfect (Sudah Terjadi Sebelum Peristiwa Lampau Lain):
+   (+) S + had + V3 + O
+       Contoh: The movie had started before we entered the theater.
+   (-) S + had + not + V3 + O
+       Contoh: The movie had not started before we entered.
+   (?) Had + S + V3 + O?
+       Contoh: Had the movie started before you entered?
+
+8. Past Perfect Continuous (Durasi Lampau Sebelum Titik Acuan):
+   (+) S + had + been + V-ing + O
+       Contoh: He had been driving for four hours before he took a rest.
+   (-) S + had + not + been + V-ing + O
+       Contoh: He had not been driving for long before the rain fell.
+   (?) Had + S + been + V-ing + O?
+       Contoh: Had he been driving for hours before stopping?
+
+
+=== 3. KELOMPOK FUTURE TENSES (WAKTU MASA DEPAN) ===
+
+9. Simple Future (Rencana / Keputusan Masa Depan):
+   (+) S + will + V1 + O  (atau: S + is/am/are going to + V1)
+       Contoh: I will help you with your homework.
+   (-) S + will not (won't) + V1 + O
+       Contoh: I will not forget your kindness.
+   (?) Will + S + V1 + O?
+       Contoh: Will you join our study group tomorrow?
+
+10. Future Continuous (Akan Sedang Terjadi di Titik Masa Depan):
+    (+) S + will be + V-ing + O
+        Contoh: At 10 AM tomorrow, we will be taking the exam.
+    (-) S + will not be + V-ing + O
+        Contoh: We will not be studying at midnight.
+    (?) Will + S + be + V-ing + O?
+        Contoh: Will you be attending the seminar tomorrow afternoon?
+
+11. Future Perfect (Akan Sudah Selesai Sebelum Titik Tertentu):
+    (+) S + will have + V3 + O
+        Contoh: By next month, I will have finished this training course.
+    (-) S + will not have + V3 + O
+        Contoh: They will not have built the house before next year.
+    (?) Will + S + have + V3 + O?
+        Contoh: Will you have graduated by next July?
+
+12. Future Perfect Continuous (Durasi Hingga Masa Depan Tertentu):
+    (+) S + will have been + V-ing + O
+        Contoh: By next year, they will have been living here for 10 years.
+    (-) S + will not have been + V-ing + O
+        Contoh: She will not have been working here that long.
+    (?) Will + S + have been + V-ing + O?
+        Contoh: Will you have been studying English for two years by December?
+
+
+=== 4. KELOMPOK PAST FUTURE TENSES (PENGANDAIAN / RENCANA LAMPAU) ===
+
+13. Simple Past Future (Rencana Masa Lalu / Pengandaian):
+    (+) S + would + V1 + O
+        Contoh: He told me that he would call me later.
+    (-) S + would not (wouldn't) + V1 + O
+        Contoh: I told him I wouldn't accept the bribe.
+    (?) Would + S + V1 + O?
+        Contoh: Would you go there if you were invited?
+
+14. Past Future Continuous (Seharusnya Sedang Berlangsung di Masa Lampau):
+    (+) S + would be + V-ing + O
+        Contoh: I would be swimming now if the pool were open.
+    (-) S + would not be + V-ing + O
+        Contoh: She would not be working today if she were not healthy.
+    (?) Would + S + be + V-ing + O?
+        Contoh: Would you be living in Jakarta if you had taken that job?
+
+15. Past Future Perfect (Pasti Sudah Terjadi di Masa Lalu Seandainya...):
+    (+) S + would have + V3 + O
+        Contoh: We would have won the match if we had played seriously.
+    (-) S + would not have + V3 + O
+        Contoh: I would not have arrived on time without your ride.
+    (?) Would + S + have + V3 + O?
+        Contoh: Would you have bought that car if you had had enough money?
+
+16. Past Future Perfect Continuous (Durasi yang Seharusnya Terjadi di Masa Lampau):
+    (+) S + would have been + V-ing + O
+        Contoh: If the flight had not been delayed, we would have been resting at the hotel for two hours by now.
+    (-) S + would not have been + V-ing + O
+        Contoh: They would not have been waiting in the rain if the bus had arrived on schedule.
+    (?) Would + S + have been + V-ing + O?
+        Contoh: Would she have been teaching here for a decade if she hadn't moved abroad?`,
             },
           ],
         },

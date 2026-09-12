@@ -69,7 +69,7 @@ export const ModuleHeader: React.FC<ModuleHeaderProps> = ({
         <div className="mt-6 p-4 sm:p-5 bg-neutral-100/70 border border-neutral-300 text-xs font-mono space-y-2">
           <div className="flex items-center gap-2 text-neutral-900 font-bold uppercase tracking-wider text-xs">
             <ShieldCheck className="w-4 h-4 text-indigo-600 shrink-0" />
-            <span>KURIKULUM TATA BAHASA & 16 TENSES LENGKAP</span>
+            <span>KURIKULUM BAHASA INGGRIS & 16 TENSES LENGKAP</span>
           </div>
           <p className="text-neutral-700 font-sans leading-relaxed text-xs sm:text-sm">
             Silabus mencakup <strong>Matriks Lengkap 16 Tenses</strong> (Present, Past, Future, Past Future × Simple, Continuous, Perfect, Perfect Continuous) serta materi pendukung esensial berstandar akademik CEFR/TOEFL: <strong>Gerund & To-Infinitive</strong>, <strong>Participles</strong>, <strong>Passive Voice</strong>, <strong>Modal Auxiliaries & Modal Perfect</strong>, <strong>Causative Verbs</strong>, <strong>Direct-Indirect / Reported Speech</strong>, <strong>Conditionals & Subjunctive</strong>, <strong>Relative Clauses</strong>, <strong>Degrees of Comparison</strong>, dan <strong>Question Tags</strong>.
@@ -96,7 +96,7 @@ export const ModuleHeader: React.FC<ModuleHeaderProps> = ({
         <div className="mt-6 p-4 sm:p-5 bg-neutral-100/70 border border-neutral-300 text-xs font-mono space-y-2">
           <div className="flex items-center gap-2 text-neutral-900 font-bold uppercase tracking-wider text-xs">
             <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
-            <span>PETA KONSEP 10 CABANG MATEMATIKA KOMPREHENSIF</span>
+            <span>PETA KONSEP 10 CABANG MATEMATIKA</span>
           </div>
           <p className="text-neutral-700 font-sans leading-relaxed text-xs sm:text-sm">
             Kurikulum disusun terstruktur memetakan 10 cabang utama matematika: <strong>Aritmatika</strong>, <strong>Aljabar</strong> (Polinom, Persamaan Kuadrat, SPL, Eksponen & Logaritma), <strong>Geometri</strong> (Datar, Ruang, Lingkaran, Transformasi, Vektor), <strong>Trigonometri</strong>, <strong>Barisan & Deret</strong> (Sigma, Rekurensi), <strong>Kalkulus</strong> (Limit, Diferensial, Integral), <strong>Statistika</strong>, <strong>Peluang</strong> (Pencacahan, Permutasi, Kombinasi), <strong>Logika Matematika</strong>, dan <strong>Penalaran Matematika (HOTS & Pemodelan)</strong>.

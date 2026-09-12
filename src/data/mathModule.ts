@@ -3,7 +3,7 @@ import { Module } from '../types';
 export const DEFAULT_MATH_MODULE: Module = {
   id: 'matematika',
   badge: 'PETA KONSEP 10 CABANG LENGKAP · 10 BAB · 24 MATERI',
-  title: 'MODUL PEMBELAJARAN MATEMATIKA KOMPREHENSIF',
+  title: 'MODUL PEMBELAJARAN MATEMATIKA',
   description:
     'Kurikulum lengkap berstandar akademik yang mencakup 10 cabang utama matematika: Aritmatika, Aljabar, Geometri, Trigonometri, Barisan & Deret, Kalkulus, Statistika, Peluang, Logika Matematika, dan Penalaran Matematika (HOTS & Pemodelan).',
   category: 'Sains, Aljabar & Kalkulus',

@@ -8,7 +8,7 @@ import {
 } from '../data/defaultModules';
 
 const STORAGE_KEYS = {
-  MODULES_CATALOG: 'learnhub_modules_catalog_v7',
+  MODULES_CATALOG: 'learnhub_modules_catalog_v9',
   MODULE_DATA_LEGACY: 'learnhub_module_data_v1',
   PROGRESS: 'learnhub_reading_progress_v1',
   THEME: 'learnhub_theme_v1',
